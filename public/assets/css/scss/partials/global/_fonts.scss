@@ -1,0 +1,8 @@
+// $medium:"barlowmedium",Sans-serif;
+// $regular:"barlowbold",Sans-serif;
+// $bold:"barlowbold",Sans-serif;
+
+@mixin font($family,$weight){
+font-family:$family!important;
+font-weight:$weight!important;
+}

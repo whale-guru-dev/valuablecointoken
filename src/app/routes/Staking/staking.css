@@ -1,0 +1,8 @@
+body.other-body {
+    background-color: #001529;
+}
+
+canvas.stakingCanvas {
+    width: 150px !important;
+    margin: 0 auto;
+}

@@ -1,0 +1,404 @@
+.staking{
+ 
+
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  
+     
+ 
+
+    &-container{
+        width: $pageWidth;      
+        padding: 80px 0 100px 0;
+        // display: grid;
+        // grid-template-columns: 1fr 1fr;
+        // justify-content: space-between;
+        align-items: center;
+        z-index: 5;
+        text-align: center;
+        overflow-x: hidden;
+
+        @include mobile{
+            padding: 60px 0 60px 0;
+        }
+
+        h1{
+            font-size: 30px;
+            margin-bottom: 40px;
+
+        }
+
+
+        .stake-box{
+
+            padding: 50px;
+            background: #FFF1E2;
+            /* shadow 1 */
+
+            box-shadow: 0px 16px 50px rgba(181, 181, 181, 0.15);
+            border-radius: 15px;
+            font-size: 12px;
+
+            @include tablet-portrait{
+                padding: 10px;
+            }
+
+            @include mobile{
+                padding: 40px 05px;
+            }
+
+
+
+            .wallet-apy{
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 20px;
+            }
+
+
+            .the-stake{
+                text-align: left;
+
+                h4{
+                    font-weight: normal;
+                    color: #616A8B;
+                    margin-bottom: 10px;
+                }
+
+                form{
+
+                    .form{
+                        display: flex;
+                        flex-direction: column;
+
+
+                        &-content{
+                            display: flex;
+                            // flex-direction: column;
+                            justify-content: space-between;
+                            // background:$body-bg;
+                            
+                            // padding: 20px;
+
+                            @include mobile{ 
+                                flex-wrap: wrap;
+                            justify-content: center;
+
+                            }
+
+                            .sbox{
+                                position: relative;
+                                padding: 50px 20px;
+                                color:#fff;
+                                flex-basis: 300px;
+                                height: 150px;
+                                background: linear-gradient(90deg, #E57506 27.75%, #F0B921 100%);
+                            /* shadow 1 */
+
+                                box-shadow: 0px 16px 50px rgba(181, 181, 181, 0.15);
+                                border-radius: 12px;
+
+                                img.bg-img {
+                                    position: absolute;
+                                    right: 0;
+                                    bottom: 0;
+                                    border-radius: 20px;
+                                    width: 100px;
+                                }
+                                h3{
+                                    margin-top:10px;
+                                    line-height: 26px;
+                               }
+
+                                .progress{
+                                    background: #FFFFFF;
+                                    border-radius: 10px;
+                                    height: 5px;
+                                    width: 40%;
+                                    margin-top: 10px;
+                                
+                               }
+
+                                p{
+                                    text-align: justify;
+                                line-height: 24px;
+                                font-size: 12px;
+                                }
+
+                                @include mobile{
+                                    margin-top: 10px;
+                                }
+                            }
+                            
+                            
+                            @include mobile{
+                            padding: 10px;
+
+                            }
+
+
+                            .select-box{
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+                                margin-bottom: 20px;
+
+                                .select-token{
+                                    select{
+                                        background:transparent;
+                                        // appearance: none;
+                                        border: none;
+                                        color: white;
+                                        font-size: 16px;
+                                    }
+                                }
+
+                                .token-icon{
+                                    img{
+                                        width: 70px;
+
+                                    @include mobile{
+                                        width: 50px;
+
+                                    }
+
+                                        
+                                    }
+                                }
+                            }
+
+                            .input-box{
+                                input{
+                                    width: 100%;
+                                    background: #32395E;
+                                    border-radius: 5px;
+                                    padding: 12px;
+                                    border: none;
+                                    color: white;
+                                    font-weight: normal;
+                                    position: relative;
+                                }
+                                .line{
+                                        
+                                    background:$gradient-button;
+                                    height: 01px;
+                                    margin-left: 3px;
+                                    width: 60%;
+                                    z-index: 2;
+
+                                }
+
+                            }
+                        }
+
+                        &-actions{
+
+                            display: flex;
+                            justify-content: space-between;
+                            margin-top: 50px;
+
+                            @include mobile{
+                                flex-direction: column-reverse;
+                            }
+
+                            .steps{
+                                display: flex;
+                                justify-content: space-between;
+                            align-items: center;
+
+                            @include mobile{
+                                @include mobile{
+                                    justify-content: center;
+                                }
+                            }
+
+                                
+                                div:last-child{
+                                    margin-left: 20px;
+
+
+                                }
+                               
+                               
+
+                            }
+
+                            .claim-reward{
+                                display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+
+                            @include mobile{
+                                justify-content: center;
+                            }
+
+
+                            .approve{
+
+                                @include mobile{
+                                    font-size: 12px;
+                                }
+                            }
+
+
+                            .confirm{
+                                background: -webkit-gradient(linear, left top, right top, color-stop(27.75%, #E57506), to(#F0B921));
+                                background: linear-gradient(90deg, #E57506 27.75%, #F0B921 100%);
+                                border-radius: 25px;
+                                height: 45px;
+                                width: 260px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                position: relative;
+                                z-index: 1;
+                                
+                                &::before {
+                                    content: '';
+                                    position: absolute;
+                                    top: 0;
+                                    right: 0;
+                                    bottom: 0;
+                                    left: 0;
+                                    z-index: -1;
+                                    margin: 3;
+                                    border-radius: inherit;
+                                    background: #fff;
+                                }
+
+                                button{
+                                    background: none;
+                                    color: #E57506;
+                                    border: none;
+                                }
+
+                            }
+
+
+                            div:last-child{
+                                margin-left: 20px;
+
+                                @include mobile{
+                                    margin-bottom: 20px;
+                                }
+
+                            }
+
+                            }
+
+                        }
+
+                        &-staking-table{
+                            margin-top:50px;
+                            position: relative;
+
+                            .tbl-toggle{
+                                background-color: #fff;
+                                border-radius: 25px;
+                                padding: 10px;
+                                width: 35px;
+                                position: absolute;
+                                right: 30px;
+                                top:10px;
+                                transform: rotate(180deg);
+
+                                @include mobile{
+
+                                    right: 50px;
+                                    top:-20px;
+                                    
+                                }
+
+
+                                &.active{
+                                    transform: rotate(0deg);
+                                }
+                            }
+
+                            
+                            table{
+                                border-radius:25px;
+                                background:#FFA953;
+                                padding: 25px;
+                                width: 100%;
+                                text-align: left;
+                                border-collapse: collapse;
+
+                                @include mobile{
+                                    font-size: 11px;
+                                    padding: 10px 5px;
+                                }
+
+                                thead>tr>th {
+                                    padding:20px;
+
+                                    @include mobile{
+                                    padding:20px 08px;
+                                    }
+                                    
+                                    @include tablet-portrait{
+                                       font-size: 12px;
+                                    }
+                                }
+                                tbody>tr>td {
+                                    padding: 10px 20px;
+
+                                    @include mobile{
+                                        padding:10px 05px;
+                                    }
+                                }
+                                tr {
+
+                                    &:nth-child(even){
+                                    background-color: #fff1e2bd;
+                                        // &:hover{
+                                        //     background-color: #ffffff;
+                                        // }
+                                    }
+
+                                    // &:nth-child(odd){
+                                    //     // background-color: #ffffff;
+                                    //     // &:hover{
+                                    //     //     background-color: #FFF1E2;
+                                    //     // }
+                                    // }
+                                
+                                
+                                
+                                }
+                                
+
+                                .claim-btn{
+                                    text-align:center;
+                                    background: #ffa954;
+                                    border-radius: 25px;
+                                    padding: 9px;
+                                    border: 2px solid #fff;
+
+                                    &:hover{
+                                        background-color: #fff;
+                                        color:#E57506;
+                                        cursor:pointer;
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                }
+
+
+            }
+
+            
+            
+
+        }
+
+           
+    }
+
+
+}

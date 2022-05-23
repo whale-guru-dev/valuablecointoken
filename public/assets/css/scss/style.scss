@@ -1,0 +1,46 @@
+/**
+Author: Nolimitbuzz
+Website URL: https://nolimitbuzz.net
+Developer: Engr. Segun
+CSS Framework: SASS
+
+*/
+
+
+/* GLOBAL PARTIALS */
+@import './partials/global/variables';
+@import './partials/global/colors';
+@import './partials/global/reset';
+@import './partials/global/fonts';
+@import './partials/global/media-query';
+
+
+
+
+/*Navigation*/ 
+@import './partials/navigation';
+
+/*Navigation*/ 
+@import './partials/about';
+
+/*Hero*/ 
+@import './partials/hero';
+
+/*Token Details*/ 
+@import './partials/token-details';
+
+/*Staking*/ 
+// @import './partials/staking';
+
+/*Tokenomics*/ 
+@import './partials/tokenomics';
+
+/*Roadmap*/ 
+@import './partials/roadmap';
+
+/*Footer*/ 
+@import './partials/footer';
+
+
+/*FOR STAKING DAPP*/
+@import './partials/staking-dapp';

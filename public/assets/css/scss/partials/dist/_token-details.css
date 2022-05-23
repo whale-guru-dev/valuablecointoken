@@ -1,0 +1,44 @@
+.token-details {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.token-details::after {
+  content: "";
+  position: absolute;
+  background: url("../../img/d.png");
+  background-position: center right;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 100%;
+  height: 100%;
+}
+.token-details-container {
+  width: 1140px;
+  padding: 160px 0px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+.token-details-container .left {
+  padding-right: 50px;
+  font-size: 14px;
+}
+.token-details-container .left h1 {
+  margin-bottom: 20px;
+}
+.token-details-container .left p {
+  line-height: 25px;
+}
+.token-details-container .right {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.token-details-container .right .icon-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  grid-template-columns: 50px auto;
+}

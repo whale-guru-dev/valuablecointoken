@@ -1,0 +1,36 @@
+@font-face {
+    font-family: 'Avenir LT Pro';
+    src: url('AvenirLTPro-Book.woff2') format('woff2'),
+        url('AvenirLTPro-Book.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Avenir LT Pro';
+    src: url('AvenirLTPro-Roman.woff2') format('woff2'),
+        url('AvenirLTPro-Roman.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Avenir LT Pro';
+    src: url('AvenirLTPro-Medium.woff2') format('woff2'),
+        url('AvenirLTPro-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Avenir LT Pro 65';
+    src: url('AvenirLTPro-Black.woff2') format('woff2'),
+        url('AvenirLTPro-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+

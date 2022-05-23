@@ -1,0 +1,117 @@
+.about{
+    // background:linear-gradient(to right,rgba($middle_green,0.6));
+    // background-color: $body;
+
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    // background-color: #F9F3F3;
+    margin-top: -300px;
+  
+     
+
+
+    &-container{
+        width: $pageWidth;      
+        padding: 160px 0 100px 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+        // justify-content: space-between;
+        align-items: center;
+        z-index: 5;
+
+           
+
+       
+
+
+        @include tablet-portrait{
+            padding:170px 20px 100px 20px ;
+        grid-template-columns: 1fr;
+        text-align: center;
+
+        }
+        @include mobile{
+            padding:100px 20px 50px 20px ;
+        grid-template-columns: 1fr;
+        text-align: center;
+        }
+
+
+
+        .left{
+            background: #FFF1E2;
+            /* shadow 1 */
+            position: relative;
+
+        box-shadow: 0px 16px 50px rgba(181, 181, 181, 0.15);
+        border-radius: 20px;
+        padding: 50px 150px 50px 50px;
+
+        @include mobile{
+            padding:30px;
+        }
+
+            img.bg-img {
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                border-radius: 20px;
+                width: 200px;
+                @include mobile{
+                    width:100px;
+                }
+            }
+            h3{
+                margin: 20px 0;
+            }
+            p{
+                text-align: justify;
+            line-height: 24px;
+            font-size: 12px;
+            }
+    
+        }
+        .right{
+            position: relative;
+            /* Gradient */
+        padding: 50px 150px 50px 50px;
+
+        background: linear-gradient(90deg, #E57506 27.75%, #F0B921 100%);
+        box-shadow: 0px 16px 44px rgba(181, 181, 181, 0.15);
+        border-radius: 20px;
+        color: $white;
+
+        @include mobile{
+            padding:30px;
+        }
+
+        img.bg-img {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            border-radius: 20px;
+            width: 200px;
+            @include mobile{
+                width:100px;
+            }
+        }
+        h3{
+            margin: 20px 0;
+
+        }
+        p{
+            text-align: justify;
+        line-height: 24px;
+        font-size: 12px;
+        }
+
+        }
+
+        
+
+    }
+
+}

@@ -1,0 +1,253 @@
+.header{
+    // background:linear-gradient(to right,rgba($middle_green,0.6));
+    background-color: #F9F3F3;
+
+    position: fixed;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 999;
+    top: 0px;
+
+  
+
+    &-container{
+        width: $pageWidth;      
+        padding: 05px 0px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        @include tablet-portrait{
+            padding:20px;
+        }
+        @include mobile{
+            padding:10px ;
+        }
+
+        .logo{
+            img{
+                width: 80px;
+
+                @include tablet-portrait{
+                    width: 60px;
+
+                }
+                @include mobile{
+                width: 60px;
+    
+                }
+            }
+           
+        }
+
+        .right-side{ 
+            display: flex;
+            align-items: center;
+            .menu{
+                transition: all 1s ease-in-out;
+
+                ul{
+                    display: inline-flex;
+
+                    @include mobile{
+                        display: block;
+                        margin-top: 50px;
+                    }
+
+                    li{
+                        list-style-type: none;
+                        margin-right: 20px;
+                        margin-left: 20px;
+                        font-weight: 800;
+
+                        @include tablet-portrait{
+                        line-height: 4em;
+                        margin-right: 10px;
+                        margin-left: 10px;
+                        }
+
+                        @include mobile{
+                            line-height: 57px;
+                        }
+
+                        a{
+                        text-decoration: none;
+                        color: $black;
+                        font-size: 14px;
+
+                        @include tablet-portrait{
+                        font-size: 12px;
+
+                        }
+
+                        @include mobile{
+                            font-size: 16px;
+                        }
+
+                        &:hover{
+                            color: $yellow;
+                        }
+
+
+                        }
+
+                    }
+                }
+
+                span{
+                    display: none;
+                    cursor: pointer;
+                }
+
+
+                @include mobile{
+                
+                        position: absolute;
+                        background: #fff;
+                        padding: 20px;
+                        top: 0;
+                        left: -480px;
+                        height: 100vh;
+                        width:100%;
+
+                        span{
+                            content: "<span> </span>";
+                            position: absolute;
+                            right: 20px;
+                            top: 20px;
+                            font-size:20px;
+                            color: #f6370c;
+                            display: block;
+
+                        }
+                
+                }
+
+            }
+            .connect.mobile{
+                display: none;
+                @include mobile{
+                    display: block!important;
+                }
+
+            }
+
+            .connect{
+                a{
+                    color: $white;
+                    text-decoration: none;
+
+                    @include mobile{
+                        display: none;
+                    }
+                
+                
+                    div.button{
+                        background-image:$gradient-button;
+                        padding: 14px 35px;
+                        border-radius: 25px;
+                        width: 182px;
+                        text-align: center;
+                        font-weight:500;
+                        height: 45px;
+                        margin-left: 20px;
+                        // align-items: ;
+
+                        h5{
+                            font-size: 16px;
+                            font-weight:400;
+                            
+                            @include tablet-portrait{
+                            font-size: 13px;
+
+                            }
+
+                        }
+
+
+                        &:hover{
+                            background-image:$gradient-button;
+        
+                        }
+                        
+                    }
+
+                }
+            }
+
+            .connect-mobile{
+                a{
+                    color: $white;
+                    text-decoration: none;
+                    display: none;
+
+                    @include mobile{
+                        display: block;
+                        margin-right: 30px;
+                    }
+                
+                
+                    div.button{
+                        background-image:$gradient-button;
+                        padding: 14px 35px;
+                        border-radius: 25px;
+                        width: 182px;
+                        text-align: center;
+                        font-weight:500;
+                        height: 45px;
+                        margin-left: 20px;
+                        // align-items: ;
+
+                        h5{
+                            font-size: 16px;
+                            font-weight:400;
+                            
+                            @include tablet-portrait{
+                            font-size: 13px;
+
+                            }
+
+                        }
+
+
+                        &:hover{
+                            background-image:$gradient-button;
+        
+                        }
+                        
+                    }
+
+                }
+            }
+
+
+
+            .hamburger{
+                display: none;
+                cursor: pointer;
+
+                @include mobile{
+                    display: block;
+                }
+
+                img{
+
+                    @include mobile{
+                            width: 40px;
+                    }
+                }
+            }
+
+        }
+    }
+
+}
+
+.mobile-visible{
+    display: none;
+
+    @include mobile{
+        display: block;
+    }
+}

@@ -1,0 +1,230 @@
+.footer{
+    // background:linear-gradient(to right,rgba($middle_green,0.6));
+    background-color: $body-bg;
+
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  
+     
+
+
+
+    &-container{
+        width: 800px;      
+        // padding: 0px 100px 100px 100px;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        padding-bottom:50px ;
+        // grid-template-columns: 1fr 1fr;
+        // justify-content: space-between;
+        // align-items: center;
+        // z-index: 5;
+        // text-align: center;
+
+
+        @include mobile{
+            padding-left: 10px;
+            padding-right: 10px;
+        padding-bottom:30px ;
+
+        }
+
+        .action-buttons{
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: -20px;
+            flex-wrap: wrap;
+
+            @include tablet-portrait{
+                width: 80%;
+                margin: 0 auto;
+            }
+
+            @include mobile{
+                padding: 10px;
+                flex-direction: column;
+            }
+
+
+
+            a{
+                color: $white;
+                text-decoration: none;
+
+                div{
+                    border-radius: 25px;
+                    padding: 13px;
+                transition: all 0.5s ease;
+    
+    
+                    &:hover{
+                        transform: translateY(-10px);
+                    }
+
+                    @include mobile{
+                        width: 155px;
+                        margin-bottom: 15px;
+                    }
+                }
+
+                .holder{
+                    background: $gradient-button;
+                    padding: 12px;
+                    font-size: 12px;
+
+                    @include mobile{
+                        text-align: center;
+                    }
+
+
+                }
+    
+                .liquidity,.cointelegraph{
+                    background: $gradient-button;
+                    background-clip: padding-box; /* !importanté */
+                    border: 3px  solid transparent; /* !importanté */
+                    border-radius: 25px;
+                    position: relative;
+                    padding: 2px;
+                    height: 45px;
+                    width: 160px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    .title{
+                       
+                        background:$body-bg;
+                        height: 100%;
+                        width: 100%;
+                        border-radius: 25px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-style: normal;
+                        font-size: 12px;
+                        // margin: 0 auto;
+                    }
+                }
+            }
+
+
+
+
+
+
+        }
+
+        .description{
+            font-size: 14px;
+            text-align: center;
+            font-weight: 100;
+            color:#fff;
+
+            P{
+            margin-top: 50px;
+            margin-bottom: 50px;
+
+            &:first-child{
+                width: 70%;
+                
+                margin: 50px auto;
+
+                @include mobile{
+                width: 90%;
+
+
+                }
+            }
+
+            }
+
+
+        }
+
+        .socials{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            width: 60%;
+            margin: 0 auto;
+
+
+            @include mobile{
+                width: 95%;
+            }
+
+            
+
+            img{
+                width: 35px;
+                transition: all 0.5s ease;
+
+                &:hover{
+                    transform: translateY(-10px);
+                }
+            }
+        }
+
+        .partners{
+            display: flex;
+            margin-top: 70px;
+            justify-content: space-between;
+
+            @include mobile{
+                width: 95%;
+            }
+
+            width: 50%;
+            margin: 0 auto;
+
+            a{
+                color: $white;
+                text-decoration: none;
+
+                &:hover{
+                    color: $yellow;
+                }
+
+                div{
+                    margin-top: 50px;
+                font-weight: 100;
+                font-size: 14px;
+                @include mobile{
+                    font-size: 12px;
+
+                }
+    
+                }
+            }
+        }
+
+        .copyright{
+            text-align: center;
+            margin-top: 50px;
+            font-size: 11px;
+            color: $body_text;
+            line-height: 25PX;
+
+
+            a{
+                color: #efb41f;
+                text-decoration: none;
+
+                &:hover{
+                    color: $yellow;
+                }
+            }
+
+        }
+
+
+
+    }
+
+
+}

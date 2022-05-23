@@ -1,0 +1,167 @@
+.token-details{
+    // background:linear-gradient(to right,rgba($middle_green,0.6));
+    // background-color: $body;
+
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  
+  
+
+    &::before{
+        content: "";
+        position: absolute;
+        background: url('../../img/d.png');
+        background-position: center right;
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 100%;
+        height: 100%;
+    }
+  
+
+    &-container{
+        width: $pageWidth;      
+        padding: 20px 20px;
+        display: flex;
+        text-align: center;
+       
+        // justify-content: space-between;
+        align-items: center;
+
+
+        @include tablet-portrait{
+            padding: 30px;
+        grid-template-columns: 1fr;
+
+        }
+
+        @include mobile{
+            padding: 20px;
+        grid-template-columns: 1fr;
+        text-align: center;
+
+        }
+
+        .left{
+            padding-right: 100px;
+            font-size: 14px;
+            
+            h1{
+                margin-bottom: 20px;
+                font-size: 30px;
+            }
+
+            p{
+                line-height: 30px;
+                @include mobile{
+                    line-height: 25px;
+                }
+            }
+
+            @include mobile{
+                padding: 0px;
+            }
+
+
+        }
+
+        .right{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 80px;
+
+            @include mobile{
+            padding-top: 50px;
+
+            }
+
+
+            .icon-box{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-evenly;
+                grid-template-columns: 50px auto;
+                background:$body-bg;
+                // grid-gap:20px;
+                padding:20px;
+                border-radius: 15px;
+                height: 150px;
+                width: 140px;
+
+                @include mobile{
+                    width:30%;
+                height: 140px;
+
+
+                 }
+                 transition: all 0.6 ease;
+
+
+                
+
+                   
+            }
+
+           
+
+            .haze-crypto,.coin-gecho{
+                position: relative;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 0; right: 0; bottom: 0; left: 0;
+                    z-index: -1;
+                    margin:  0 -3 -3 02; /* !importanté */
+                    border-radius: inherit; /* !importanté */
+                    background: $gradient-button;
+
+                    // &:hover{
+                    // background: $gradient-button-hover;
+                    // }
+
+                }
+
+                &:hover{
+                    background: $gradient-button!important;
+
+                   
+                }
+
+            }
+            .coin-market{
+                background: $gradient-button;
+                position: relative;
+
+                 &:hover{
+                     background:$body-bg;
+
+                    &::before {
+                        
+    
+                        
+                        content: '';
+                        position: absolute;
+                        top: 0; right: 0; bottom: 0; left: 0;
+                        z-index: -1;
+                        margin:  0 -3 -3 02; /* !importanté */
+                        border-radius: inherit; /* !importanté */
+                        background: $gradient-button;
+    
+                         }
+
+                   
+                 }
+            }
+        }
+
+
+
+
+    }
+
+}

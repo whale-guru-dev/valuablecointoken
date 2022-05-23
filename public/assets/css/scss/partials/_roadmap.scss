@@ -1,0 +1,216 @@
+.roadmap{
+ 
+
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #ffffff;
+  
+     
+ 
+
+    &-container{
+        width: 1000px;      
+        padding: 80px 50px 100px 50px;
+        // display: grid;
+        // grid-template-columns: 1fr 1fr;
+        // justify-content: space-between;
+        align-items: center;
+        z-index: 5;
+        text-align: center;
+        overflow-x: hidden;
+
+        @include mobile{
+            padding: 60px 0 60px 0;
+        }
+
+
+        .top{
+
+            h1{
+                margin:50px;
+            }
+        }
+
+        .bottom{
+            display: flex;
+            flex-direction: column;
+
+            .map{
+                display: flex;
+
+                &:nth-child(odd){
+                    justify-content: flex-start;
+                }
+
+                &:nth-child(even){
+                    justify-content: flex-end;
+                    // flex-direction: row-reverse;
+
+                }
+
+                .roadmap-line{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    @include mobile{
+                        display: none;
+                    }
+               
+                }
+
+                .one{
+                    padding: 25px;
+                    background-color: #FFD7AF;
+                    border-radius: 8px;
+                    position: relative;
+                    width: 350px;
+                    height: 200px;
+                    h3{
+                        text-align: left;
+                        font-size: 15px;
+                        margin-bottom:10px;
+                    }
+                    ul{
+                        li{
+                            list-style-type: square;
+                            text-align: left;
+                            font-size: 13px;
+                            line-height: 20px;
+                            margin-left: 15px;
+                        }
+                    }
+                     img{
+                         
+                            position: absolute;
+                            right: 0;
+                            bottom: 0;
+                            // border-radius: 20px;
+                            width: 50px;
+                        
+                     }
+
+                }
+
+                .two{
+                    padding: 25px;
+                    background-color: #FFD7AF;
+                    border-radius: 8px;
+                    position: relative;
+                    width: 350px;
+                    height: 200px;
+                    h3{
+                        text-align: left;
+                        font-size: 15px;
+                        margin-bottom:10px;
+                    }
+                    ul{
+                        li{
+                            list-style-type: square;
+                            text-align: left;
+                            font-size: 13px;
+                            line-height: 20px;
+                            margin-left: 15px;
+                        }
+                    }
+                     img{
+                         
+                            position: absolute;
+                            right: 0;
+                            bottom: 0;
+                            // border-radius: 20px;
+                            width: 50px;
+                        
+                     }
+
+                }
+
+                .three{
+                    padding: 25px;
+                    background-color: #FFD7AF;
+                    border-radius: 8px;
+                    position: relative;
+                    width: 350px;
+                    height: 200px;
+                    h3{
+                        text-align: left;
+                        font-size: 15px;
+                        margin-bottom:10px;
+                    }
+                    ul{
+                        li{
+                            list-style-type: square;
+                            text-align: left;
+                            font-size: 13px;
+                            line-height: 20px;
+                            margin-left: 15px;
+                        }
+                    }
+                     img{
+                         
+                            position: absolute;
+                            right: 0;
+                            bottom: 0;
+                            // border-radius: 20px;
+                            width: 50px;
+                        
+                     }
+
+                }
+
+                .four{
+                    padding: 25px;
+                    background-color: #FFD7AF;
+                    border-radius: 8px;
+                    position: relative;
+                    width: 350px;
+                    height: 200px;
+                    h3{
+                        text-align: left;
+                        font-size: 15px;
+                        margin-bottom:10px;
+                    }
+                    ul{
+                        li{
+                            list-style-type: square;
+                            text-align: left;
+                            font-size: 13px;
+                            line-height: 20px;
+                            margin-left: 15px;
+                        }
+                    }
+                     img{
+                         
+                            position: absolute;
+                            right: 0;
+                            bottom: 0;
+                            // border-radius: 20px;
+                            width: 50px;
+                        
+                     }
+
+                }
+
+            }
+
+            @include tablet-portrait{
+                grid-template-columns:repeat(auto-fit, minmax(40%, max-content));
+                // row-gap: 20px;
+                padding: 15px;
+            }
+
+            @include mobile{
+            grid-template-columns:repeat(auto-fit, minmax(100%, max-content));
+            row-gap: 20px;
+            padding: 15px;
+             }
+
+          
+        }
+
+    }
+
+
+}
