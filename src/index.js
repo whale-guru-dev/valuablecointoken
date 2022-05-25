@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Web3 from 'web3';
 import { Web3ReactProvider } from '@web3-react/core';
 
 import MainApp from './MainApp';

@@ -1,2 +1,2 @@
-export { default as VCABI } from './lib/VCAbi';
-export { default as VCStakeABI } from './lib/VCStakeAbi';
+export * from './lib/VCAbi';
+export * from './lib/VCStakeAbi';

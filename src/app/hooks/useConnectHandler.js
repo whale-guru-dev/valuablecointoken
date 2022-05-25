@@ -15,7 +15,7 @@ export default function useConnectHandler() {
     setShowWalletModal(true);
   };
 
-  const onStaking = pathname === '/staking';
+  const onStaking = pathname === '/staking' || pathname === "/staking-gold";
 
   const chainSupported = (onStaking) && (chainId === 56 || chainId === 97);
 
