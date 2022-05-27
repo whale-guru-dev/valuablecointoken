@@ -20,6 +20,7 @@ import {
     FETCH_INTERVAL,
     VC_CONTRACT_ADDRESS,
     VC_STAKE_ADDRESS,
+    VC_STAKE_GOLD_ADDRESS,
 } from '../consts/vc-stake-consts';
 
 export default function useBalance(lastUpdatedTime) {
@@ -30,6 +31,10 @@ export default function useBalance(lastUpdatedTime) {
     const [totalWithdrawn, setTotalWithdrawn] = useState(0);
     const [dividends, setDividends] = useState(0);
     const [bonus, setBonus] = useState(0);
+    const [totalDepositGold, setTotalDepositGold] = useState(0);
+    const [totalWithdrawnGold, setTotalWithdrawnGold] = useState(0);
+    const [dividendsGold, setDividendsGold] = useState(0);
+    const [bonusGold, setBonusGold] = useState(0);
     const [totalSupply, setTotalSupply] = useState(0);
 
     const defaultDecimals = 1e18;
@@ -44,7 +49,7 @@ export default function useBalance(lastUpdatedTime) {
 
     const vcContractInstance = useMemo(() => new web3.eth.Contract(VCABI, VC_CONTRACT_ADDRESS), [web3]);
     const vcStakingContractInstance = useMemo(() => new web3.eth.Contract(VCStakeABI, VC_STAKE_ADDRESS), [web3]);
-
+    const vcStakingGoldContractInstance = useMemo(() => new web3.eth.Contract(VCStakeABI, VC_STAKE_GOLD_ADDRESS), [web3]);
 
     useEffect(() => {
         async function getBalance() {
@@ -58,13 +63,17 @@ export default function useBalance(lastUpdatedTime) {
                     vcStakingContractInstance.methods.getUserTotalWithdrawn(address).call(),
                     vcStakingContractInstance.methods.getUserDividends(address).call(),
                     vcStakingContractInstance.methods.getUserReferralBonus(address).call(),
+                    vcStakingGoldContractInstance.methods.getUserTotalDeposits(address).call(),
+                    vcStakingGoldContractInstance.methods.getUserTotalWithdrawn(address).call(),
+                    vcStakingGoldContractInstance.methods.getUserDividends(address).call(),
+                    vcStakingGoldContractInstance.methods.getUserReferralBonus(address).call(),
                     vcContractInstance.methods.totalSupply().call(),
                 );
             } else {
-                promises.push(0, 0, 0, 0, 0, 0, 0)
+                promises.push(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
             }
 
-            const [bnbBalance, vcBalance, totalDeposit, totalWithdrawn, dividends, bonus, totalSupply] = await Promise.all(promises);
+            const [bnbBalance, vcBalance, totalDeposit, totalWithdrawn, dividends, bonus, totalDepositGold, totalWithdrawnGold, dividendsGold, bonusGold, totalSupply] = await Promise.all(promises);
 
             setBnbBalance(Number(BNtoNumber(bnbBalance.toString(), defaultDecimals)));
             setVcBalance(Number(BNtoNumber(vcBalance.toString(), defaultDecimals)));
@@ -72,6 +81,10 @@ export default function useBalance(lastUpdatedTime) {
             setTotalWithdrawn(Number(BNtoNumber(totalWithdrawn.toString(), defaultDecimals)));
             setDividends(Number(BNtoNumber(dividends.toString(), defaultDecimals)));
             setBonus(Number(BNtoNumber(bonus.toString(), defaultDecimals)));
+            setTotalDepositGold(Number(BNtoNumber(totalDepositGold.toString(), defaultDecimals)));
+            setTotalWithdrawnGold(Number(BNtoNumber(totalWithdrawnGold.toString(), defaultDecimals)));
+            setDividendsGold(Number(BNtoNumber(dividendsGold.toString(), defaultDecimals)));
+            setBonusGold(Number(BNtoNumber(bonusGold.toString(), defaultDecimals)));
             setTotalSupply(Number(BNtoNumber(totalSupply.toString(), defaultDecimals)))
         }
 
@@ -84,7 +97,7 @@ export default function useBalance(lastUpdatedTime) {
                 clearInterval(handler.current);
             }
         };
-    }, [web3, address, chainId, vcContractInstance, vcStakingContractInstance, lastUpdatedTime]);
+    }, [web3, address, chainId, vcContractInstance, vcStakingContractInstance, vcStakingGoldContractInstance, lastUpdatedTime]);
 
     return {
         bnbBalance,
@@ -93,6 +106,10 @@ export default function useBalance(lastUpdatedTime) {
         totalWithdrawn,
         dividends,
         bonus,
+        totalDepositGold,
+        totalWithdrawnGold,
+        dividendsGold,
+        bonusGold,
         totalSupply
     };
 }

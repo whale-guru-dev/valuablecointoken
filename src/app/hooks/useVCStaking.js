@@ -25,7 +25,7 @@ import {
 
 const MAX_LP = '1000000000000000000000000';
 
-export default function usePDStaking() {
+export default function useVCStaking() {
     const {
         addNotification
     } = useNotification();

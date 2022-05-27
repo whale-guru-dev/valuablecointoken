@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { useSearchParams } from "react-router-dom"
 import "./staking.css";
 
-import usePDStakingGold from "../../hooks/useVCStakingGold";
+import useVCStakingGold from "../../hooks/useVCStakingGold";
 import useBalance from "../../hooks/useBalance";
 import VCUiContext from "../../contexts/VCUiContext";
 
@@ -16,7 +16,7 @@ export default function Staking1() {
     } = useWeb3React();
 
     const { lastUpdatedTime } = useContext(VCUiContext);
-    const { vcBalance, totalDeposit, totalWithdrawn, dividends, bonus, totalSupply } =
+    const { vcBalance, totalDepositGold, totalWithdrawnGold, dividendsGold, bonusGold, totalSupply } =
         useBalance(lastUpdatedTime);
 
     const [searchParams, ] = useSearchParams()
@@ -28,7 +28,7 @@ export default function Staking1() {
         onClaim,
         onStake,
         onReinvest
-    } = usePDStakingGold();
+    } = useVCStakingGold();
 
     return (
         <>
@@ -38,9 +38,9 @@ export default function Staking1() {
                         <a href="/">
                             <img src="./assets/img/logo.svg" alt="logo"/>
                         </a>
-                        <div className="connect-disconnect staking-details active">
+                        {/* <div className="connect-disconnect staking-details active">
                             <a href="./assets/pdf/ValuableCoins Staking Details.pdf" target="_blank" rel="noreferrer">Staking Details</a>
-                        </div>                        
+                        </div>                         */}
                         <ConnectBtn />
                         <h2>ValuableCoins staking contract is designed to payout investors 5% a day with a 30% ROI. The more VC appreciates in value the higher your payout is in USD.
                             Please read our document page for full staking details.
@@ -56,11 +56,11 @@ export default function Staking1() {
 
                             <div className="item">
                                 <span className="property">Your Total Deposit</span>
-                                <span className="value"> <span id="contract">{totalDeposit.toFixed(6)}</span> VC</span>
+                                <span className="value"> <span id="contract">{totalDepositGold.toFixed(6)}</span> VC</span>
                             </div>
                             <div className="item">
                                 <span className="property">Total Claimed</span>
-                                <span className="value"> <span id="contract">{totalWithdrawn.toFixed(6)}</span> VC</span>
+                                <span className="value"> <span id="contract">{totalWithdrawnGold.toFixed(6)}</span> VC</span>
                             </div>
                         </div>
 
@@ -77,12 +77,12 @@ export default function Staking1() {
 
                         <div className="stake-rewards">
                             <span className="property">Your Rewards</span>
-                            <span className="value"> <span id="contract">{dividends.toFixed(6)}</span> VC</span>
+                            <span className="value"> <span id="contract">{dividendsGold.toFixed(6)}</span> VC</span>
                         </div>
 
                         <div className="stake-rewards">
                             <span className="property">Your Referral Bonus</span>
-                            <span className="value"> <span id="contract">{bonus.toFixed(6)}</span> VC</span>
+                            <span className="value"> <span id="contract">{bonusGold.toFixed(6)}</span> VC</span>
                         </div>
 
                         <div className="stake-action-buttons">

@@ -25,7 +25,7 @@ import {
 
 const MAX_LP = '1000000000000000000000000';
 
-export default function usePDStakingGold() {
+export default function useVCStakingGold() {
     const {
         addNotification
     } = useNotification();
@@ -88,7 +88,7 @@ export default function usePDStakingGold() {
             refAddress = '0x0000000000000000000000000000000000000000';
 
 
-        const depositAmountInWei = numberToBN(depositAmountNumber, 1e18); console.log(depositAmountInWei)
+        const depositAmountInWei = numberToBN(depositAmountNumber, 1e18);
         // check allowance
 
         try {

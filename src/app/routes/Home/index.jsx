@@ -19,12 +19,13 @@ export default function Home() {
               <ul>
                 <li data-aos="fade-in" data-aos-duration="3000"><a href="#about">Home</a> </li>
                 <li data-aos="fade-in" data-aos-duration="3000"><a href="#roadmap">Roadmap</a> </li>
+                <li data-aos="fade-in" data-aos-duration="3000"><a href="https://bscscan.com/address/0xf6e497bd65dfb7c0556020dd68d007f0ac76bc6a" target="_blank" rel="noreferrer">Token Contract</a> </li>
                 <li data-aos="fade-in" data-aos-duration="3000"><a href="#tokenomics">Tokenomics</a> </li>
                 <li data-aos="fade-in" data-aos-duration="3000"><a href="https://poocoin.app/tokens/0xf6e497bd65dfb7c0556020dd68d007f0ac76bc6a" target="_blank" rel="noreferrer">Charts</a> </li>
                 <li className="mobile-visible" data-aos="fade-in" data-aos-duration="3000"><a href="#">Begin Staking</a> 
                   <ul>
-                    <li data-aos="fade-in" data-aos-duration="3000"><a href="/staking" target="_blank" rel="noreferrer">1.5%</a> </li>
-                    <li data-aos="fade-in" data-aos-duration="3000"><a href="/staking-gold" target="_blank" rel="noreferrer">5%</a> </li>
+                    <li data-aos="fade-in" data-aos-duration="3000"><a href="/staking" target="_blank" rel="noreferrer">1.5% Daily</a> </li>
+                    <li data-aos="fade-in" data-aos-duration="3000"><a href="/staking-gold" target="_blank" rel="noreferrer">5% Daily</a> </li>
                   </ul>
                 </li>
               </ul>
@@ -34,8 +35,8 @@ export default function Home() {
               <a href="#">
                 <div className="button animation animated fadeInUp dropdown"><h5>Begin Staking</h5> 
                   <div class="dropdown-content">
-                    <a href="/staking" target="_blank" rel="noreferrer">1.5%</a>
-                    <a href="/staking-gold" target="_blank" rel="noreferrer">5%</a>
+                    <a href="/staking" target="_blank" rel="noreferrer">1.5% Daily</a>
+                    <a href="/staking-gold" target="_blank" rel="noreferrer">5% Daily</a>
                   </div>
                 </div>
               </a>
