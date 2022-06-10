@@ -87,10 +87,11 @@ export default function Fomo() {
             setBuyPrice(Number(BNtoNumber(buyPrice.toString(), defaultDecimals))); console.log({buyPrice})
             setSellPrice(Number(BNtoNumber(sellPrice.toString(), defaultDecimals))); console.log({sellPrice})
             setTotalVCContract(Number(BNtoNumber(totalVCContract.toString(), defaultDecimals))); console.log({totalVCContract})
-            setRoundCount(roundCount); console.log({roundCount})
+            setRoundCount(roundCount);
+            return roundCount;
         }
 
-        async function getRoundData() {
+        async function getRoundData(roundCount) {
             if (roundCount > 0) {
                 const promises = [];
 
@@ -109,7 +110,7 @@ export default function Fomo() {
             }
         }
 
-        async function getTicketsOwned() {
+        async function getTicketsOwned(roundCount) {
             if (roundCount > 0) {
                 console.log("getTicketsOwned", roundCount)
                 const promises = [];
@@ -128,7 +129,7 @@ export default function Fomo() {
             }
         }
 
-        async function getClaimValues() {
+        async function getClaimValues(roundCount) {
             if (roundCount > 0) {
                 console.log("getClaimValues", roundCount)
                 const promises = [];
@@ -165,10 +166,10 @@ export default function Fomo() {
         }
 
         handler.current = setInterval(() => {
-            getBalance().then(() => {
-                getRoundData().then(() => {
-                    getTicketsOwned().then(() => {
-                        getClaimValues();
+            getBalance().then((roundCount) => {
+                getRoundData(roundCount).then(() => {
+                    getTicketsOwned(roundCount).then(() => {
+                        getClaimValues(roundCount);
                     });
                 });
             });
