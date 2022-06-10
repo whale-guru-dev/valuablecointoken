@@ -166,9 +166,11 @@ export default function Fomo() {
 
         handler.current = setInterval(() => {
             getBalance().then(() => {
-                getRoundData();
-                getTicketsOwned();
-                getClaimValues();
+                getRoundData().then(() => {
+                    getTicketsOwned().then(() => {
+                        getClaimValues();
+                    });
+                });
             });
         }, FETCH_INTERVAL);
 
