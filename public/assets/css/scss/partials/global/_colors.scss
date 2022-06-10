@@ -15,7 +15,57 @@ $white:#fff;
 $gradient-button:linear-gradient(90deg, #E57506 27.75%, #F0B921 100%);
 $gradient-button-hover:linear-gradient(90deg,#F0B921 100% ,#E57506 27.75% );
 $hero-bg:#0D0D2B;
-$body-bg:#0D0D2B;
+// $body-bg:#0D0D2B;
+
+
+ 
+
+
+/* COLOR PALLETE*/
+
+/* Text*/ 
+$body_text:#8095A9;
+$body_text_white:#ffffff;
+$yellow:#F0B90B;
+$fade_yellow:#E1CFA0;
+$black:#000;
+$white:#fff;
+$text_color:#8095A9;
+/* BG*/ 
+
+$nav_bg:#002B53;
+$body_bg:#ffffff;
+
+/* Gradient Button*/ 
+
+$btn_text_color:#002B53;
+$btn_bg_color1:#DEA909;
+$btn_bg_color2:#D09410;
+$btn_bg_color3:#E3CF5C;
+ 
+
+/*Widget Colors*/
+
+$widget_bg:#001B36;
+$widget_item_bg:#E1CFA0;
+
+.bg-fade-yellow{
+background-color: $fade_yellow;
+}
+.bg-light-navy{
+    background-color: $nav_bg;
+} 
+
+.text-grey{
+    color: $text_color;
+}
+.text-navy{
+    color: $body_bg;
+}
+
+.text-white{
+    color: $white;
+}
 
 
  

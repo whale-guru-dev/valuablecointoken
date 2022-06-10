@@ -44,3 +44,28 @@ CSS Framework: SASS
 
 /*FOR STAKING DAPP*/
 @import './partials/staking-dapp';
+
+
+
+
+/* DASHBOARD PARTIALS */ 
+
+/*Header*/ 
+@import './partials/global/header-dashboard';
+
+// /*Social Media*/ 
+// @import './partials/global/follow';
+
+/*Dashboard navigation/sidemenu */ 
+@import './partials/global/sidemenu-dashboard.scss';
+
+/* Stake Dashboard Content*/ 
+// @import './partials/dashboard/stake/content.scss';
+
+
+/* Private Sales Dashboard Content*/ 
+@import './partials/dashboard/private-sales/content.scss';
+
+
+/* Footer Section */ 
+@import './partials/global/footer-dashboard';

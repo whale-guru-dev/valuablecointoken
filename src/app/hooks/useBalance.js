@@ -55,7 +55,7 @@ export default function useBalance(lastUpdatedTime) {
         async function getBalance() {
             const promises = [];
 
-            if (address && chainId === 56) {
+            if (address && chainId === 97) {
                 promises.push(
                     web3.eth.getBalance(address),
                     vcContractInstance.methods.balanceOf(address).call(),

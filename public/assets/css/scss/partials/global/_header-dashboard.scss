@@ -1,0 +1,196 @@
+.header{
+    // background:linear-gradient(to right,rgba($middle_green,0.6));
+    background-color: #F8F1F0;
+
+    position: fixed;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 99;
+    top: 0px;
+
+    @include mobile{
+
+    // background: linear-gradient(57deg, #F0B921 29%,#E57506 50.75%);
+    // border-radius: 0 0 5px 5px;
+
+    }
+
+    &-container{
+        width: 100%;      
+        padding: 20px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        // @include tablet-portrait{
+        //     padding:20px ;
+        // }
+        @include mobile{
+            padding: 1px 9px;
+        }
+
+
+
+        .left-header{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap:10px;
+        align-items: center;
+
+        @include tablet-portrait{
+           
+            grid-template-columns: 54% 79%;
+           
+
+            }
+
+            // .logo{
+
+            //     a{
+            //         img{
+            //             width:70px;
+                        
+            //         }
+            //     }
+                
+            // }
+
+            .nav{
+
+                margin-left: 25px;
+                width: 200px;
+
+                
+                @include tablet-portrait{
+                margin-left: 0px;
+    
+                }
+
+                @include mobile{
+                    display: none;
+
+                }
+
+                h3{
+                        font-size:13px;
+                        font-weight: 400;
+
+                        span{
+                        font-weight: 200;
+                        font-family: "Avenir LT Pro";
+                        color: #8F9098;
+
+                        }
+                }
+
+                h4{
+                    font-size:17px;
+                    color: #252F40;
+                    margin-top:10px;
+                    font-weight: 700;
+                }
+            }
+
+        }
+
+
+        .right-header{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap:20px;
+            align-items: center;
+            margin-right: 10px;
+
+
+            @include tablet-portrait{
+            margin-right: 0px;
+            
+           
+
+            }
+
+            @include mobile{
+            margin-right: 0px;
+            grid-gap: 0px;
+
+            }
+
+            
+
+            .signin-setting-notif{
+                display:grid;
+                grid-template-columns: 1fr 1fr;
+                grid-gap:10px;
+                text-align: right;
+
+                @include mobile{
+                    display: none;
+                }
+                // align-items: flex-end;
+
+                // .sigin{}
+
+                .settings-notif{
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-gap:20px;
+
+                // .settings{}
+
+                .notif{
+                    position: relative;
+                    span{
+                        font-size:12px;
+                        // width: 50px;
+                        // height: 50px;
+                        background-color: red;
+                        border-radius: 100%;
+                        padding: 03px 8px;
+                        color: $white;
+                        position: absolute;
+                        top: -14px;
+                        left: 16px;
+                    }
+                }
+
+                }
+
+            }
+
+            .connect{
+                a{
+                    color: #fff;
+                    text-decoration: none;
+                   
+                   
+                    div.button{
+                        background: linear-gradient(90deg, #E57506 27.75%, #F0B921 100%);
+                        padding: 10px;
+                        border-radius: 25px;
+                        width: 140px;
+                        text-align: center;
+    
+                        &:hover{
+                            background: linear-gradient(270deg, #F0B921 50%,#E57506 87.75%);
+        
+                        }
+                        
+                    }
+    
+                }
+            }
+
+            .hamburger{
+                display: none;
+                text-align: right;
+
+                @include mobile{
+                    display: block;
+                }
+            }
+        }
+
+    }
+
+}

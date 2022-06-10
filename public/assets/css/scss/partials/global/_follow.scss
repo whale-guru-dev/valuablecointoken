@@ -1,0 +1,69 @@
+.follow-pd-staking{
+    position: fixed;
+    z-index: 999;
+    right: -60px;
+    top:50%;
+    transform: rotate(270deg);
+    background: $widget_bg;
+    padding: 15px 25px;
+    border-radius: 20px 20px 0 0px;
+    
+    @include mobile{
+        display: none;
+    }
+    
+        a{
+    
+            color: $text_color;
+            text-decoration: none;
+    
+                &:hover{
+                 color: $yellow;
+                
+                }
+    
+    
+            h5{
+                color: $text_color;
+                &:hover{
+                    color: $yellow;
+                   
+                   }
+            }
+        }
+    
+        &-social{
+    
+            position: fixed;
+            transition: right 1s ease;
+            z-index: 999;
+            right: -70px;
+            top:35%;
+            // transform: rotate(270deg);
+            background: $widget_bg;
+            padding: 15px 17px;
+            border-radius: 20px 0px 0 20px;
+    
+            @include mobile{
+                display: none;
+            }
+    
+            ul{
+                li{
+                    list-style-type: none;
+                    margin-bottom: 20px;
+    
+    
+                    img{
+                        width: 30px;
+                    }
+                }
+    
+            }
+    
+    
+        }
+    
+    
+    }
+    
