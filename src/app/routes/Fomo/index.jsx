@@ -50,7 +50,7 @@ export default function Fomo() {
     const [totalVCContract, setTotalVCContract] = useState(0);
     const [roundCount, setRoundCount] = useState(0);
     const [vCPrice, setVCPrice] = useState(0);
-    const [roundData, setRoundData] = useState({ ticketCount: 0, jackpot: 0, timer: 0, holderPool: 0, maxticketsholder: '0x0000000000000000000000000000000000000000' });
+    const [roundData, setRoundData] = useState({ ticketCount: 0, jackpot: 0, timer: 0, holderPool: 0, maxticketsholder: '0x0000000000000000000000000000000000000000', latestholders: [] });
     const [ticketsOwned, setTicketsOwned] = useState(0);
     const [claimData, setClaimData] = useState([]);
 
@@ -84,9 +84,9 @@ export default function Fomo() {
 
             const [buyPrice, sellPrice, totalVCContract, roundCount] = await Promise.all(promises);
 
-            setBuyPrice(Number(BNtoNumber(buyPrice.toString(), defaultDecimals))); console.log({buyPrice})
-            setSellPrice(Number(BNtoNumber(sellPrice.toString(), defaultDecimals))); console.log({sellPrice})
-            setTotalVCContract(Number(BNtoNumber(totalVCContract.toString(), defaultDecimals))); console.log({totalVCContract})
+            setBuyPrice(Number(BNtoNumber(buyPrice.toString(), defaultDecimals)));
+            setSellPrice(Number(BNtoNumber(sellPrice.toString(), defaultDecimals)));
+            setTotalVCContract(Number(BNtoNumber(totalVCContract.toString(), defaultDecimals)));
             setRoundCount(roundCount);
             return roundCount;
         }
@@ -98,49 +98,30 @@ export default function Fomo() {
                 if (account && chainId === 97) {
                     promises.push(
                         vcFomoContractInstance.methods.rounds(roundCount).call(),
-                    );
-                } else {
-                    promises.push({ ticketCount: 0, jackpot: 0, timer: 0, holderPool: 0, maxticketsholder: '0x0000000000000000000000000000000000000000' })
-                }
-
-                const [roundData] = await Promise.all(promises);
-                console.log(roundData)
-
-                setRoundData(roundData);
-            }
-        }
-
-        async function getTicketsOwned(roundCount) {
-            if (roundCount > 0) {
-                console.log("getTicketsOwned", roundCount)
-                const promises = [];
-
-                if (account && chainId === 97) {
-                    promises.push(
                         vcFomoContractInstance.methods.getTicketsOwned(roundCount, account).call(),
                     );
                 } else {
-                    promises.push(0)
+                    promises.push({ ticketCount: 0, jackpot: 0, timer: 0, holderPool: 0, maxticketsholder: '0x0000000000000000000000000000000000000000', latestholders: [] }, 0)
                 }
 
-                const [ticketsOwned] = await Promise.all(promises); console.log({ticketsOwned})
+                const [roundData, ticketsOwned] = await Promise.all(promises);
 
+                setRoundData(roundData);
                 setTicketsOwned(ticketsOwned);
             }
         }
 
         async function getClaimValues(roundCount) {
             if (roundCount > 0) {
-                console.log("getClaimValues", roundCount)
                 const promises = [];
 
                 if (account && chainId === 97) {
-                    for (let i = 1; i <= roundCount; i++) {
+                    for (let i = 0; i < roundCount; i++) {
                         const roundPromise = [];
                         roundPromise.push(
-                            vcFomoContractInstance.methods.calcDividends(i, account).call(),
-                            vcFomoContractInstance.methods.calcPayout(i, account).call(),
-                            vcFomoContractInstance.methods.getReclaim(i, account).call(),
+                            vcFomoContractInstance.methods.calcDividends(i+1, account).call(),
+                            vcFomoContractInstance.methods.calcPayout(i+1, account).call(),
+                            vcFomoContractInstance.methods.getReclaim(i+1, account).call(),
                         );
                         promises.push({
                             round: i,
@@ -152,15 +133,13 @@ export default function Fomo() {
                 }
 
                 const claimData = [];
-                for (let i = 1; i <= roundCount; i++) {
-                    console.log("roundPromise : ", promises[i-1].roundPromise)
-                    const claimDataRound = await Promise.all(promises[i-1].roundPromise);
+                for (let i = 0; i < roundCount; i++) {
+                    const claimDataRound = await Promise.all(promises[i].roundPromise);
                     claimData.push({
-                        round: i,
+                        round: i+1,
                         claimDataRound
                     });
                 }
-
                 setClaimData(claimData);
             }
         }
@@ -168,9 +147,7 @@ export default function Fomo() {
         handler.current = setInterval(() => {
             getBalance().then((roundCount) => {
                 getRoundData(roundCount).then(() => {
-                    getTicketsOwned(roundCount).then(() => {
-                        getClaimValues(roundCount);
-                    });
+                    getClaimValues(roundCount);
                 });
             });
         }, FETCH_INTERVAL);
@@ -413,7 +390,7 @@ export default function Fomo() {
                                     </thead>
                                     <tbody>
                                         {
-                                            claimData && claimData.sort((a, b) => a.round - b.round).map((data, index) => {
+                                            claimData && claimData.map((data) => {
                                                 <tr>
                                                     <td>Round {data?.round + 1}</td>
                                                     {
@@ -456,7 +433,8 @@ export default function Fomo() {
                                     <h4>Last Six Ticket Buyer</h4>
                                     {roundData && roundData?.latestholders && roundData?.latestholders.map(each => {
                                         <div className="buyer">
-                                            <span>{each}</span> <span className="val">{getTicketsOwnedByAddress(each)}</span>
+                                            <span>{each}</span> 
+                                            {/* <span className="val">{getTicketsOwnedByAddress(each)}</span> */}
                                         </div>
                                     })}
                                 </div>
