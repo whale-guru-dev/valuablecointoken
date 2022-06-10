@@ -87,15 +87,17 @@ export default function useVCFomo() {
         try {
             const allowance = await VCContractInstance.methods
                 .allowance(address, VC_FOMO_ADDRESS)
-                .call();
+                .call(); console.log({allowance})
             const buyPrice = await VCFomoContractInstance.methods
                 .buyPrice(buySellTicketAmountNumber)
-                .call();
+                .call(); console.log({buyPrice})
             if (allowance < buyPrice) {
+                console.log("allowance < buyPrice")
                 await VCContractInstance.methods.approve(VC_FOMO_ADDRESS, MAX_LP).send({
                     from: address,
                 });
             }
+            console.log("buyTicket")
             await VCFomoContractInstance.methods.buyTicket(buySellTicketAmountNumber).send({
                 from: address,
             });

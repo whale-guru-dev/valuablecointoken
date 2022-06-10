@@ -43,7 +43,6 @@ export default function Fomo() {
         onSellTicket,
         onClaimDividends,
         onClaimPayout,
-        onReinvest
     } = useVCFomo();
 
     const [buyPrice, setBuyPrice] = useState(0);
@@ -72,7 +71,6 @@ export default function Fomo() {
     useEffect(() => {
         async function getBalance() {
             const promises = [];
-
             if (account && chainId === 97) {
                 promises.push(
                     vcFomoContractInstance.methods.buyPrice(1).call(),
@@ -86,10 +84,10 @@ export default function Fomo() {
 
             const [buyPrice, sellPrice, totalVCContract, roundCount] = await Promise.all(promises);
 
-            setBuyPrice(Number(BNtoNumber(buyPrice.toString(), defaultDecimals)));
-            setSellPrice(Number(BNtoNumber(sellPrice.toString(), defaultDecimals)));
-            setTotalVCContract(Number(BNtoNumber(totalVCContract.toString(), defaultDecimals)));
-            setRoundCount(Number(BNtoNumber(roundCount.toString(), defaultDecimals)));
+            setBuyPrice(Number(BNtoNumber(buyPrice.toString(), defaultDecimals))); console.log({buyPrice})
+            setSellPrice(Number(BNtoNumber(sellPrice.toString(), defaultDecimals))); console.log({sellPrice})
+            setTotalVCContract(Number(BNtoNumber(totalVCContract.toString(), defaultDecimals))); console.log({totalVCContract})
+            setRoundCount(roundCount); console.log({roundCount})
         }
 
         async function getRoundData() {
@@ -101,7 +99,7 @@ export default function Fomo() {
                         vcFomoContractInstance.methods.rounds(roundCount).call(),
                     );
                 } else {
-                    promises.push({})
+                    promises.push({ ticketCount: 0, jackpot: 0, timer: 0, holderPool: 0, maxticketsholder: '0x0000000000000000000000000000000000000000' })
                 }
 
                 const [roundData] = await Promise.all(promises);
@@ -112,8 +110,8 @@ export default function Fomo() {
         }
 
         async function getTicketsOwned() {
-
             if (roundCount > 0) {
+                console.log("getTicketsOwned", roundCount)
                 const promises = [];
 
                 if (account && chainId === 97) {
@@ -121,11 +119,10 @@ export default function Fomo() {
                         vcFomoContractInstance.methods.getTicketsOwned(roundCount, account).call(),
                     );
                 } else {
-                    promises.push({ ticketCount: 0, jackpot: 0, timer: 0, holderPool: 0, maxticketsholder: '0x0000000000000000000000000000000000000000' })
+                    promises.push(0)
                 }
 
-                const [ticketsOwned] = await Promise.all(promises);
-                console.log(ticketsOwned)
+                const [ticketsOwned] = await Promise.all(promises); console.log({ticketsOwned})
 
                 setTicketsOwned(ticketsOwned);
             }
@@ -133,10 +130,11 @@ export default function Fomo() {
 
         async function getClaimValues() {
             if (roundCount > 0) {
+                console.log("getClaimValues", roundCount)
                 const promises = [];
 
                 if (account && chainId === 97) {
-                    for (let i = 0; i <= roundCount; i++) {
+                    for (let i = 1; i <= roundCount; i++) {
                         const roundPromise = [];
                         roundPromise.push(
                             vcFomoContractInstance.methods.calcDividends(i, account).call(),
@@ -153,8 +151,9 @@ export default function Fomo() {
                 }
 
                 const claimData = [];
-                for (let i = 0; i <= roundCount; i++) {
-                    const claimDataRound = await Promise.all(promises[i].roundPromise);
+                for (let i = 1; i <= roundCount; i++) {
+                    console.log("roundPromise : ", promises[i-1].roundPromise)
+                    const claimDataRound = await Promise.all(promises[i-1].roundPromise);
                     claimData.push({
                         round: i,
                         claimDataRound
@@ -166,10 +165,11 @@ export default function Fomo() {
         }
 
         handler.current = setInterval(() => {
-            getBalance();
-            getRoundData();
-            getTicketsOwned();
-            getClaimValues();
+            getBalance().then(() => {
+                getRoundData();
+                getTicketsOwned();
+                getClaimValues();
+            });
         }, FETCH_INTERVAL);
 
         return () => {
@@ -177,7 +177,7 @@ export default function Fomo() {
                 clearInterval(handler.current);
             }
         };
-    }, [web3, account, chainId, vcFomoContractInstance, lastUpdatedTime, roundCount]);
+    }, [account]);
 
     const getTicketsOwnedByAddress = useCallback((address) => {
         return vcFomoContractInstance.methods.getTicketsOwned(roundCount, address).call();
@@ -349,8 +349,8 @@ export default function Fomo() {
                                                     <div className="symbol"><i className="fa fa-long-arrow-up" aria-hidden="true"></i></div>
                                                     <div className="bought"><span className="val">{buyPrice}</span> <br /><span className="tex">Buy Price</span> </div>
                                                 </div>
-                                                <div className="buy-ticket">
-                                                    <a href="#" onClick={() => onBuyTicket()}>
+                                                <div className="buy-ticket"  onClick={() => onBuyTicket()}>
+                                                    <a href="#">
                                                         <div className="button">Buy Ticket With VC</div>
                                                     </a>
                                                 </div>
@@ -361,8 +361,8 @@ export default function Fomo() {
                                                     <div className="symbol"><i className="fa fa-long-arrow-up" aria-hidden="true"></i></div>
                                                     <div className="bought"><span className="val">{sellPrice}</span> <br /><span className="tex">Sell Price</span> </div>
                                                 </div>
-                                                <div className="buy-ticket">
-                                                    <a href="#" onClick={() => onSellTicket()}>
+                                                <div className="buy-ticket" onClick={() => onSellTicket()}>
+                                                    <a href="#">
                                                         <div className="button">Sell Tickets For VC</div>
                                                     </a>
                                                 </div>
@@ -425,11 +425,11 @@ export default function Fomo() {
                                                         {
                                                             data?.round === roundCount ?
                                                                 <>
-                                                                    <div className="button" onClick={onClaimDividends(data?.claimDataRound[0])}>Claim Div </div> <br />
-                                                                    <div className="button" onClick={onClaimPayout(data?.round)}>Claim Payout </div>
+                                                                    <div className="button" onClick={() => onClaimDividends(data?.claimDataRound[0])}>Claim Div </div> <br />
+                                                                    <div className="button" onClick={() => onClaimPayout(data?.round)}>Claim Payout </div>
                                                                 </>
                                                                 :
-                                                                <div className="button" onClick={onClaimPayout(data?.round)}>Claim Payout </div>
+                                                                <div className="button" onClick={() => onClaimPayout(data?.round)}>Claim Payout </div>
                                                         }
                                                     </td>
                                                 </tr>
