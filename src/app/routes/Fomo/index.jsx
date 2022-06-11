@@ -434,8 +434,8 @@ export default function Fomo() {
                                                             <td className=" draft"><i className="fa fa-circle" aria-hidden="true"></i>Finished</td>
                                                     }
                                                     <td>{Number(BNtoNumber(data?.claimDataRound[0].toString(), defaultDecimals)).toFixed(4)} VC</td>
-                                                    <td>{Number(BNtoNumber(data?.claimDataRound[1].toString(), defaultDecimals)).toFixed(4)} VC</td>
                                                     <td>{Number(BNtoNumber(data?.claimDataRound[2].toString(), defaultDecimals)).toFixed(4)} VC</td>
+                                                    <td>{Number(BNtoNumber(data?.claimDataRound[1].toString(), defaultDecimals)).toFixed(4)} VC</td>
                                                     <td>
                                                         {
                                                             data?.round == roundCount ?
