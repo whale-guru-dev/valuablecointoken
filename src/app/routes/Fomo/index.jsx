@@ -192,15 +192,17 @@ export default function Fomo() {
     useEffect(() => {
         let isSubscribed = true;
         const getData = async () => {
+            setLatestHolderData([]);
             const latestHoldersData = [];
-            for(let i = 0; i < latestHolders.length; i++) {
-                const ticketsOwned = await vcFomoContractInstance.methods.getTicketsOwned(roundCount, latestHolders[i]).call();
+            console.log({latestHolders})
+            const latestHoldersList = [...new Set(latestHolders)];
+            for(let i = 0; i < latestHoldersList.length; i++) {
+                const ticketsOwned = await vcFomoContractInstance.methods.getTicketsOwned(roundCount, latestHoldersList[i]).call();
                 latestHoldersData.push({
                     address: latestHolders[i],
                     tickets: ticketsOwned
                 })
             }
-
             if (isSubscribed) {
                 setLatestHolderData(latestHoldersData);
             }
@@ -209,7 +211,7 @@ export default function Fomo() {
         
         getData()
         return () => isSubscribed = false;
-    }, [roundCount, latestHolders, vcFomoContractInstance]);
+    }, []);
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -362,7 +364,7 @@ export default function Fomo() {
 
                                                 <div className="stats">
                                                     <div className="symbol"><i className="fa fa-long-arrow-up" aria-hidden="true"></i></div>
-                                                    <div className="bought"><span className="val">{buyPrice}</span> <br /><span className="tex">Buy Price</span> </div>
+                                                    <div className="bought"><span className="val">{buyPrice.toFixed(8)}</span> <br /><span className="tex">Buy Price</span> </div>
                                                 </div>
                                                 <div className="buy-ticket"  onClick={() => onBuyTicket()}>
                                                     <a href="#">
@@ -374,7 +376,7 @@ export default function Fomo() {
                                             <div className="sell">
                                                 <div className="stats">
                                                     <div className="symbol"><i className="fa fa-long-arrow-up" aria-hidden="true"></i></div>
-                                                    <div className="bought"><span className="val">{sellPrice}</span> <br /><span className="tex">Sell Price</span> </div>
+                                                    <div className="bought"><span className="val">{sellPrice.toFixed(8)}</span> <br /><span className="tex">Sell Price</span> </div>
                                                 </div>
                                                 <div className="buy-ticket" onClick={() => onSellTicket()}>
                                                     <a href="#">
