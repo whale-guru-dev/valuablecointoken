@@ -1822,8 +1822,8 @@ section:not(:first-child) {
   margin-bottom: 8px;
 }
 .navigation-container div.navigations {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  /* display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); */
   text-align: center;
   align-items: center;
   row-gap: 0px;

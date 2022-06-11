@@ -127,7 +127,7 @@ export default function useVCFomo() {
     }
 
     const onSellTicket = async () => {
-        const buySellTicketAmountNumber = Number(buySellTicketAmount);
+        const buySellTicketAmountNumber = Number(buySellTicketAmount); console.log({buySellTicketAmountNumber})
         if (buySellTicketAmountNumber <= 0 || !isConnected() || !isChainValid()) {
             return;
         }
@@ -248,6 +248,12 @@ export default function useVCFomo() {
         }
     }
 
+    const getTicketsOwnedByAddress = async (round, address) => {
+        const ticketsOwned = await VCFomoContractInstance.methods.getTicketsOwned(round, address).call();
+        console.log({ticketsOwned})
+        return ticketsOwned; 
+    }
+
     const onClaimDividends = async (amount) => {
         if (!isConnected() || !isChainValid()) {
             return;
@@ -360,6 +366,7 @@ export default function useVCFomo() {
         onGetBuyPrice,
         onGetSellPrice,
         onGetRoundCount,
+        getTicketsOwnedByAddress,
         onClaimDividends,
         onClaimPayout,
         onReinvest
