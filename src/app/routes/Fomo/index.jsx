@@ -74,7 +74,7 @@ export default function Fomo() {
     useEffect(() => {
         async function getBalance() {
             const promises = [];
-            if (account && chainId === 97) {
+            if (account && chainId === 56) {
                 promises.push(
                     vcFomoContractInstance.methods.buyPrice(1).call(),
                     vcFomoContractInstance.methods.sellPrice(1).call(),
@@ -98,7 +98,7 @@ export default function Fomo() {
             if (roundCount > 0) {
                 const promises = [];
 
-                if (account && chainId === 97) {
+                if (account && chainId === 56) {
                     promises.push(
                         vcFomoContractInstance.methods.rounds(roundCount).call(),
                         vcFomoContractInstance.methods.getTicketsOwned(roundCount, account).call(),
@@ -119,7 +119,7 @@ export default function Fomo() {
             if (roundCount > 0) {
                 const promises = [];
 
-                if (account && chainId === 97) {
+                if (account && chainId === 56) {
                     for (let i = 0; i < roundCount; i++) {
                         const roundPromise = [];
                         roundPromise.push(
@@ -194,12 +194,11 @@ export default function Fomo() {
         const getData = async () => {
             setLatestHolderData([]);
             const latestHoldersData = [];
-            console.log({latestHolders})
             const latestHoldersList = [...new Set(latestHolders)];
             for(let i = 0; i < latestHoldersList.length; i++) {
                 const ticketsOwned = await vcFomoContractInstance.methods.getTicketsOwned(roundCount, latestHoldersList[i]).call();
                 latestHoldersData.push({
-                    address: latestHolders[i],
+                    address: latestHoldersList[i],
                     tickets: ticketsOwned
                 })
             }
@@ -211,7 +210,7 @@ export default function Fomo() {
         
         getData()
         return () => isSubscribed = false;
-    }, []);
+    }, [account, latestHolders]);
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -429,7 +428,7 @@ export default function Fomo() {
                                         {
                                             claimData && claimData.map((data) => 
                                                 <tr>
-                                                    <td>Round {data?.round + 1}</td>
+                                                    <td>Round {data?.round}</td>
                                                     {
                                                         data?.round == roundCount ?
                                                             <td className="pending"><i className="fa fa-circle " aria-hidden="true"></i>Processing</td> :

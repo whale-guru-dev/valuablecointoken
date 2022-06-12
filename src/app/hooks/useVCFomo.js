@@ -127,7 +127,7 @@ export default function useVCFomo() {
     }
 
     const onSellTicket = async () => {
-        const buySellTicketAmountNumber = Number(buySellTicketAmount); console.log({buySellTicketAmountNumber})
+        const buySellTicketAmountNumber = Number(buySellTicketAmount);
         if (buySellTicketAmountNumber <= 0 || !isConnected() || !isChainValid()) {
             return;
         }
